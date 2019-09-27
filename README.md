@@ -1,5 +1,5 @@
 # flask-socketio-test
-this is toy project on how to develop with flask and socketio.
+this is toy project to show how to develop with flask and socketio.
 
 ## install prerequisite packages
 
