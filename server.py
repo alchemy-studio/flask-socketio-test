@@ -22,7 +22,7 @@ def index():
   # return page to receive numbers
   return render_template('index.html');
 
-@socketio.on('connect')
+@socketio.on('connect', namespace = '/socket')
 def socket_connect():
   print("connected to client!");
 
