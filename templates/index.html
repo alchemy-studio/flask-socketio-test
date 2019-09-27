@@ -1,27 +1,27 @@
 <html>
-	<head>
-		<title>test page</title>
-		<meta charset="utf-8" />
-		<script src="https://ajax.lug.ustc.edu.cn/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
-	</head>
-	<body>
-		<div id="output">
-		</div>
-		<script>
-			$(document).ready(function() {
-				var socket = io('http://123.115.131.53:5000/socket');
-				socket.on('connect',function() {
-					console.log('connected to server!');
-					// send join_room event right after connect socket
-					socket.emit('join_room');
-				});
-				socket.on('msg', function(data) {
-					console.log('received message!');
-					$("#output").prepend('<li>'+data.msg+'</li>');
-				});
-			});
-		</script>
-	</body>
+<head>
+    <title>test page</title>
+    <meta charset="utf-8"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js"></script>
+</head>
+<body>
+<div id="output">
+</div>
+<script>
+    $(document).ready(function () {
+        var socket = io('http://localhost:5000/socket');
+        socket.on('connect', function () {
+            console.log('connected to server!');
+            // send join_room event right after connect socket
+            socket.emit('join_room');
+        });
+        socket.on('msg', function (data) {
+            console.log('received message!');
+            $("#output").prepend('<li>' + data.msg + '</li>');
+        });
+    });
+</script>
+</body>
 </html>
 
