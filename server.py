@@ -15,26 +15,23 @@ socketio = SocketIO(app, message_queue = "amqp://guest:guest@localhost:5672");
 
 @app.route('/')
 def index():
-    if 'uid' not in session:
-        session['uid'] = str(uuid4())
-    # call worker to generate numbers
-    generate.delay(session['uid'])
-    # return page to receive numbers
-    return render_template('index.html')
+  if 'uid' not in session:
+    session['uid'] = str(uuid4());
+  # call worker to generate numbers
+  generate.delay(session['uid']);
+  # return page to receive numbers
+  return render_template('index.html');
 
-
-@socketio.on('connect', namespace='/socket')
+@socketio.on('connect')
 def socket_connect():
-    print("connected to client!")
+  print("connected to client!");
 
-
-@socketio.on('join_room', namespace='/socket')
+@socketio.on('listening', namespace = '/socket')
 def on_listening():
-    print('listen.....')
-    room = str(session['uid'])
-    print("joining room " + room)
-    join_room(room)
-
+  room = str(session['uid']);
+  print("joining room " + room);
+  join_room(room);
 
 if __name__ == "__main__":
-    socketio.run(app, host="0.0.0.0", port=5000, debug=True)
+
+  socketio.run(app, host = "192.168.1.102", port= 5000);
