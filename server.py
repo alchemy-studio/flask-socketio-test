@@ -9,7 +9,7 @@ from worker import generate;
 
 monkey.patch_all();
 app = Flask(__name__);
-app.secret_key = 'bread1984';
+app.secret_key = 'breadbread1984';
 cors = CORS(app, resources = {r"/*":{"origins":"*"}});
 socketio = SocketIO(app, message_queue = "amqp://guest:guest@localhost:5672");
 
