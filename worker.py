@@ -11,7 +11,8 @@ socketio = SocketIO(message_queue = "amqp://guest:guest@localhost:5672");
 @celery.task
 def generate(session):
 
+  assert type(session) is str;
   for i in range(10):
-    socketio.emit("msg","/socket",session,np.random.randint(low = 0, high = 10));
+    socketio.emit("msg","/socket",session,str(np.random.randint(low = 0, high = 10)));
     sleep(1);
 
