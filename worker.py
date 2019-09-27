@@ -15,6 +15,6 @@ def generate(session):
 
   assert type(session) is str;
   for i in range(10):
-    socketio.emit("msg",namespace = "/socket",room = session, data = str(np.random.randint(low = 0, high = 10)));
+    socketio.emit("msg", "/socket", session, np.random.randint(low=0, high=10))
     sleep(1);
 
