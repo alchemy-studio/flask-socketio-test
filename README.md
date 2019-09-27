@@ -10,6 +10,12 @@ pip3 install -U flask flask-cors flask-socketio celery gevent
 sudo apt install rabbitmq-server
 ```
 
+celery and socketio need rabbit message queue, so launch it with command
+
+```bash
+sudo systemctl start rabbitmq-server
+```
+
 ## how to launch the server
 
 you need to modify the ip address to yours in server.py.
